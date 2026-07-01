@@ -6,36 +6,52 @@ Tujuannya sederhana:
 
 > **Mengurangi miskomunikasi** antara Product/BA dan Developer, sehingga development menjadi **lebih akurat, lebih cepat, dan minim rework.**
 
-## 🎯 Kenapa template ini ada?
+## 🧩 4 Jenis Template
 
-Banyak bug dan keterlambatan development bukan berasal dari kode yang salah, tapi dari **requirement yang tidak jelas**: skenario yang tidak dijelaskan, business rule yang ambigu, atau acceptance criteria yang tidak terukur. Template ini memaksa semua informasi penting dituliskan **di depan**, sebelum satu baris kode ditulis.
+Requirement dipecah menjadi **4 template** sesuai jenis kebutuhan. Satu fitur biasanya membutuhkan **lebih dari satu** template (mis. sebuah fitur punya Flow + Screen + API), dan template-template itu saling dirujuk lewat kolom **"Terkait"** di metadata.
+
+| # | Template | Kapan dipakai | File |
+|---|----------|---------------|------|
+| 1 | 🔄 **Flow / Process** | Menjelaskan **alur proses bisnis**: aktor, trigger, langkah, percabangan, status, exception. | [`templates/1-flow-process-template.md`](templates/1-flow-process-template.md) |
+| 2 | 🖥️ **Screen / UI** | Menjelaskan sebuah **halaman/layar**: field, komponen, aksi, validasi, state, navigasi. | [`templates/2-screen-template.md`](templates/2-screen-template.md) |
+| 3 | 📊 **Report** | Menjelaskan **laporan/export/dashboard**: parameter, kolom, rumus, agregasi, sumber data. | [`templates/3-report-template.md`](templates/3-report-template.md) |
+| 4 | 🔌 **API** | Menjelaskan **kontrak API/integrasi**: method, request, response, error, business rule. | [`templates/4-api-template.md`](templates/4-api-template.md) |
+
+### 🔗 Cara memilih template
+
+```
+Ada alur/proses bisnis banyak langkah?  → pakai Template 1 (Flow)
+Ada halaman/layar yang dilihat user?    → pakai Template 2 (Screen)
+Ada laporan / export / angka rekap?     → pakai Template 3 (Report)
+Ada endpoint / integrasi antar sistem?  → pakai Template 4 (API)
+```
+
+Contoh: fitur **"Export Transaksi"** = Flow (proses export) + Screen (tombol & modal filter) + Report (kolom & rumus file) + API (endpoint ambil data).
 
 ## 📂 Struktur Repositori
 
-| File | Kegunaan |
-|------|----------|
-| [`templates/requirement-template.md`](templates/requirement-template.md) | **Template utama** — salin file ini untuk setiap requirement baru. |
-| [`templates/requirement-template-lite.md`](templates/requirement-template-lite.md) | Versi ringkas untuk perubahan kecil / bugfix / minor enhancement. |
-| [`guides/panduan-pengisian.md`](guides/panduan-pengisian.md) | Penjelasan tiap bagian + tips mengisi agar tidak ambigu. |
-| [`guides/definition-of-ready.md`](guides/definition-of-ready.md) | Checklist "Definition of Ready" — kapan requirement dianggap siap dikerjakan. |
-| [`examples/contoh-requirement-terisi.md`](examples/contoh-requirement-terisi.md) | Contoh nyata template yang sudah diisi dengan benar. |
+| Folder / File | Kegunaan |
+|---------------|----------|
+| [`templates/`](templates/) | 4 template requirement (Flow, Screen, Report, API). |
+| [`guides/panduan-pengisian.md`](guides/panduan-pengisian.md) | Panduan mengisi + daftar kata ambigu yang harus dihindari. |
+| [`guides/definition-of-ready.md`](guides/definition-of-ready.md) | Checklist "Definition of Ready" — kapan requirement siap dikerjakan. |
+| [`examples/`](examples/) | Contoh keempat template yang sudah diisi (fitur "Export Transaksi"). |
+| [`requirements/`](requirements/) | Tempat menyimpan requirement aktif yang sudah diisi. |
 
 ## 🔄 Alur Penggunaan
 
 ```
-Product/BA                          Developer / Tech Lead
-   │                                        │
-   │  1. Salin requirement-template.md      │
-   │  2. Isi semua bagian wajib             │
-   │  3. Lampirkan mockup / data / kontrak  │
-   │                                        │
-   ├──────── 4. Review bersama ────────────►│
-   │                                        │  5. Cek Definition of Ready
-   │◄─────── 6. Tanya bagian ambigu ────────┤
-   │                                        │
-   │  7. Perbaiki & lengkapi                │
-   │                                        │
-   └──────── 8. Approved → masuk sprint ───►│  9. Development
+Product/BA                              Developer / Tech Lead
+   │                                          │
+   │ 1. Pilih template yang relevan (1–4)     │
+   │ 2. Salin & isi semua bagian wajib        │
+   │ 3. Rujuk antar template lewat "Terkait"  │
+   │ 4. Lampirkan mockup / kontrak / data     │
+   ├────────── 5. Review bersama ────────────►│
+   │                                          │ 6. Cek Definition of Ready
+   │◄───────── 7. Tanya bagian ambigu ────────┤
+   │ 8. Perbaiki & lengkapi                   │
+   └────────── 9. Approved → sprint ─────────►│ 10. Development
 ```
 
 ## ✅ Aturan Main
@@ -44,13 +60,15 @@ Product/BA                          Developer / Tech Lead
 2. **Bagian bertanda `(WAJIB)` tidak boleh dikosongkan.** Jika benar-benar tidak relevan, tulis `N/A` beserta alasannya.
 3. **Setiap asumsi harus ditulis.** Asumsi yang tidak ditulis = risiko bug.
 4. **Acceptance Criteria harus terukur** (bisa dijawab lulus/tidak lulus), bukan kalimat opini.
-5. **Semua pertanyaan terbuka** harus terjawab sebelum requirement masuk sprint.
+5. **Semua Pertanyaan Terbuka** harus terjawab sebelum requirement masuk sprint.
 
 ## 🚀 Cara Mulai
 
 ```bash
-# Salin template untuk fitur baru
-cp templates/requirement-template.md requirements/REQ-XXX-nama-fitur.md
+# Contoh: fitur baru butuh Flow + Screen + API
+cp templates/1-flow-process-template.md requirements/REQ-020-checkout-flow.md
+cp templates/2-screen-template.md        requirements/REQ-020-checkout-screen.md
+cp templates/4-api-template.md           requirements/REQ-020-checkout-api.md
 ```
 
-Lalu isi sesuai [panduan pengisian](guides/panduan-pengisian.md).
+Lalu isi sesuai [panduan pengisian](guides/panduan-pengisian.md) dan pastikan lolos [Definition of Ready](guides/definition-of-ready.md).
