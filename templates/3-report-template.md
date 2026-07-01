@@ -22,6 +22,21 @@
 
 ---
 
+## ⛔ Minimum Requirements — Prasyarat Wajib dari Product/BA
+
+> Template ini **tidak akan diterima** developer jika salah satu di bawah belum tersedia. Semua harus ✅ sebelum masuk review.
+
+- [ ] **Contoh file dummy** hasil laporan (`.xlsx` / `.csv` / `.pdf` / mockup dashboard) — **WAJIB, agar developer tahu bentuk akhir persis**.
+- [ ] **Definisi setiap kolom** lengkap dengan **sumber data / rumus**.
+- [ ] **Parameter / filter** yang tersedia beserta default & batasannya.
+- [ ] **Aturan perhitungan** jelas: data yang **dihitung vs dikecualikan**, pembulatan, penanganan refund/negatif.
+- [ ] **Agregasi / ringkasan** (total, subtotal, rata-rata) & letaknya ditentukan.
+- [ ] **Sumber data & zona waktu** disebutkan (real-time atau batch).
+- [ ] **Batas jumlah baris** & pola **nama file** ditentukan.
+- [ ] **Hak akses** (siapa boleh lihat/unduh data apa).
+
+---
+
 ## 1. Tujuan Laporan (WAJIB)
 - **Untuk apa laporan ini:** <keputusan/kebutuhan yang didukung>
 - **Pembaca/pengguna:** <mis. Finance, Manajemen, Merchant>

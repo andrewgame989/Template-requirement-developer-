@@ -21,6 +21,21 @@
 
 ---
 
+## ⛔ Minimum Requirements — Prasyarat Wajib dari Product/BA
+
+> Template ini **tidak akan diterima** developer jika salah satu di bawah belum tersedia. Semua harus ✅ sebelum masuk review.
+
+- [ ] **Diagram alur** (flowchart / BPMN / swimlane) terlampir — bukan hanya deskripsi teks.
+- [ ] **Daftar aktor & peran** lengkap (siapa melakukan apa).
+- [ ] **Trigger & pre-condition** jelas (kapan proses mulai & syaratnya).
+- [ ] **Semua titik keputusan** ("jika…maka…") terdefinisi — tidak ada cabang menggantung.
+- [ ] **Alur alternatif & exception** ditulis (minimal: input salah, sistem gagal, akses ditolak).
+- [ ] **Transisi status** didefinisikan bila entitas punya status.
+- [ ] **Business rules** disertai contoh konkret.
+- [ ] **Post-condition** (hasil akhir sukses & gagal) jelas.
+
+---
+
 ## 1. Tujuan Proses (WAJIB)
 - **Apa yang dicapai proses ini:** <hasil akhir bisnis>
 - **Masalah yang diselesaikan:** <konteks>

@@ -23,6 +23,21 @@
 
 ---
 
+## ⛔ Minimum Requirements — Prasyarat Wajib dari Product/BA
+
+> Template ini **tidak akan diterima** developer jika salah satu di bawah belum tersedia. Semua harus ✅ sebelum masuk review.
+
+- [ ] **Spesifikasi API** (OpenAPI/Swagger **atau** Postman collection) terlampir — **WAJIB**.
+- [ ] **Contoh request** lengkap (headers, param, body) dalam format nyata (JSON/cURL).
+- [ ] **Contoh response sukses** (JSON) dengan penjelasan tiap field.
+- [ ] **Daftar lengkap response error** (semua HTTP code, kode error, kondisi, pesan) — bukan hanya happy path.
+- [ ] **Aturan validasi** tiap field request (tipe, wajib/opsional, batasan).
+- [ ] **Autentikasi & otorisasi** (siapa boleh memanggil, role).
+- [ ] **Business rules** endpoint disertai contoh.
+- [ ] **Perilaku khusus** relevan: idempotency, rate limit, pagination, efek samping.
+
+---
+
 ## 1. Tujuan (WAJIB)
 - **Fungsi endpoint:** <apa yang dilakukan API ini>
 - **Kebutuhan bisnis yang didukung:** <konteks>

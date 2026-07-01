@@ -24,6 +24,21 @@
 
 ---
 
+## ⛔ Minimum Requirements — Prasyarat Wajib dari Product/BA
+
+> Template ini **tidak akan diterima** developer jika salah satu di bawah belum tersedia. Semua harus ✅ sebelum masuk review.
+
+- [ ] **Desain UI/UX** (link Figma/mockup/prototype) yang bisa diakses — **WAJIB, tidak boleh hanya deskripsi**.
+- [ ] **Semua state di desain**: normal, loading, empty, error, success (jangan hanya happy state).
+- [ ] **Daftar field & komponen** lengkap dengan **sumber datanya** (dari API mana / statis).
+- [ ] **Aturan validasi + pesan error** untuk setiap input.
+- [ ] **Mapping setiap tombol/aksi** ke tujuannya (API mana / navigasi ke mana).
+- [ ] **Copywriting final** (judul, label, placeholder, pesan) — bukan "lorem ipsum".
+- [ ] **Perilaku responsif** (desktop & mobile) dijelaskan.
+- [ ] **Hak akses** per role ditentukan.
+
+---
+
 ## 1. Tujuan Layar (WAJIB)
 - **Fungsi utama layar:** <apa yang bisa dilakukan user di sini>
 - **Siapa penggunanya:** <persona/role>

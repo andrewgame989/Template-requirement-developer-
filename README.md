@@ -33,6 +33,7 @@ Contoh: fitur **"Export Transaksi"** = Flow (proses export) + Screen (tombol & m
 | Folder / File | Kegunaan |
 |---------------|----------|
 | [`templates/`](templates/) | 4 template requirement (Flow, Screen, Report, API). |
+| [`guides/minimum-requirements.md`](guides/minimum-requirements.md) | **Artefak wajib per template** (API=spek, Screen=UI/UX, Report=file dummy, dst). |
 | [`guides/panduan-pengisian.md`](guides/panduan-pengisian.md) | Panduan mengisi + daftar kata ambigu yang harus dihindari. |
 | [`guides/definition-of-ready.md`](guides/definition-of-ready.md) | Checklist "Definition of Ready" — kapan requirement siap dikerjakan. |
 | [`examples/`](examples/) | Contoh keempat template yang sudah diisi (fitur "Export Transaksi"). |
@@ -61,6 +62,7 @@ Product/BA                              Developer / Tech Lead
 3. **Setiap asumsi harus ditulis.** Asumsi yang tidak ditulis = risiko bug.
 4. **Acceptance Criteria harus terukur** (bisa dijawab lulus/tidak lulus), bukan kalimat opini.
 5. **Semua Pertanyaan Terbuka** harus terjawab sebelum requirement masuk sprint.
+6. **Artefak wajib per template harus lengkap** (lihat [minimum-requirements](guides/minimum-requirements.md)): API wajib punya spek, Screen wajib punya desain UI/UX, Report wajib punya contoh file dummy, Flow wajib punya diagram. Tanpa itu, requirement dikembalikan.
 
 ## 🚀 Cara Mulai
 
