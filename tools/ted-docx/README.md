@@ -11,8 +11,12 @@ menjadi dokumen Word berformat korporat lengkap dengan kotak petunjuk pengisian 
 ```bash
 cd tools/ted-docx
 npm install docx
-node build.js
-# hasil: Template-TED-v2.docx  ->  salin ke ../../templates/Template-TED.docx
+
+# template kosong
+node build.js            # -> Template-TED-v2.docx   -> salin ke ../../templates/Template-TED.docx
+
+# contoh terisi (kasus TED #21742)
+node build-example.js    # -> Contoh-TED-21742.docx  -> salin ke ../../examples/
 ```
 
 ## Struktur file
@@ -23,7 +27,9 @@ node build.js
 | `part1.js` | Cover, Petunjuk Umum Pengisian, Bagian 0 (Identitas), A (Executive Summary), B (Technical Solution) |
 | `part2.js` | Bagian C (Detail Design) — 4 pilar: Flow, UI, API, File + DB, Security, Impact, Code Dependency, Security Code Review |
 | `part3.js` | Bagian D (Operational Handover), E (Deployment & Rollback), F (Testing), G (Risk), H (Approval) |
-| `build.js` | Perakitan dokumen: styles, daftar isi, header/footer, margin |
+| `build.js` | Perakitan template kosong: styles, daftar isi, header/footer, margin |
+| `ex1.js` / `ex2.js` / `ex3.js` | Isi contoh terisi (kasus TED #21742 — Screen Whitelist MAAS) |
+| `build-example.js` | Perakitan dokumen contoh terisi |
 
 ## Kalau template berubah
 

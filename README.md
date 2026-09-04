@@ -26,6 +26,8 @@ Template 1–4 diisi **Product/BA** sebelum development. Setelah development sel
 | 5 | 📘 **TED** (Word — dipakai sehari-hari) | Developer / Tech Lead | [`templates/Template-TED.docx`](templates/Template-TED.docx) |
 | 5 | 📘 **TED** (Markdown — sumber kebenaran isi) | Developer / Tech Lead | [`templates/5-ted-template.md`](templates/5-ted-template.md) |
 
+Contoh terisi (golden sample): [`examples/Contoh-TED-21742-Whitelist-MAAS.docx`](examples/Contoh-TED-21742-Whitelist-MAAS.docx) — TED #21742 (Screen Whitelist MAAS) diisi memakai template terbaru, sebagai acuan tingkat kedalaman yang diharapkan.
+
 Versi `.docx` sudah berformat siap pakai: cover, daftar isi, header/footer, dan **kotak "CARA MENGISI" di setiap bagian** — jadi developer tidak perlu membuka panduan terpisah saat mengisi. Halaman "Petunjuk Umum Pengisian" di depan boleh dihapus setelah dokumen selesai.
 
 > **Uji kelayakan TED:** bisakah App Support menangani insiden **jam 2 pagi** hanya dengan dokumen ini, tanpa menelepon developer? Kalau belum bisa, TED belum layak diserahterimakan.
@@ -68,7 +70,7 @@ Contoh: fitur **"Export Transaksi"** = Flow (proses export) + Screen (tombol & m
 | [`guides/minimum-requirements.md`](guides/minimum-requirements.md) | **Artefak wajib per template** (API=spek, Screen=UI/UX, Report=file dummy, dst). |
 | [`guides/panduan-pengisian.md`](guides/panduan-pengisian.md) | Panduan mengisi + daftar kata ambigu yang harus dihindari. |
 | [`guides/definition-of-ready.md`](guides/definition-of-ready.md) | Checklist "Definition of Ready" — kapan requirement siap dikerjakan. |
-| [`examples/`](examples/) | Contoh keempat template yang sudah diisi (fitur "Export Transaksi"). |
+| [`examples/`](examples/) | Contoh template 1–4 yang sudah diisi (fitur "Export Transaksi") + contoh TED terisi (kasus Screen Whitelist MAAS). |
 | [`requirements/`](requirements/) | Tempat menyimpan requirement aktif yang sudah diisi. |
 | [`guides/panduan-pengisian-ted.md`](guides/panduan-pengisian-ted.md) | Panduan mengisi TED untuk tim developer. |
 | [`guides/ted-handover-checklist.md`](guides/ted-handover-checklist.md) | Quality gate TED sebelum serah terima production. |
