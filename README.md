@@ -23,7 +23,10 @@ Template 1–4 diisi **Product/BA** sebelum development. Setelah development sel
 
 | # | Template | Diisi oleh | File |
 |---|----------|-----------|------|
-| 5 | 📘 **TED** | Developer / Tech Lead | [`templates/5-ted-template.md`](templates/5-ted-template.md) |
+| 5 | 📘 **TED** (Word — dipakai sehari-hari) | Developer / Tech Lead | [`templates/Template-TED.docx`](templates/Template-TED.docx) |
+| 5 | 📘 **TED** (Markdown — sumber kebenaran isi) | Developer / Tech Lead | [`templates/5-ted-template.md`](templates/5-ted-template.md) |
+
+Versi `.docx` sudah berformat siap pakai: cover, daftar isi, header/footer, dan **kotak "CARA MENGISI" di setiap bagian** — jadi developer tidak perlu membuka panduan terpisah saat mengisi. Halaman "Petunjuk Umum Pengisian" di depan boleh dihapus setelah dokumen selesai.
 
 > **Uji kelayakan TED:** bisakah App Support menangani insiden **jam 2 pagi** hanya dengan dokumen ini, tanpa menelepon developer? Kalau belum bisa, TED belum layak diserahterimakan.
 
@@ -70,6 +73,7 @@ Contoh: fitur **"Export Transaksi"** = Flow (proses export) + Screen (tombol & m
 | [`guides/panduan-pengisian-ted.md`](guides/panduan-pengisian-ted.md) | Panduan mengisi TED untuk tim developer. |
 | [`guides/ted-handover-checklist.md`](guides/ted-handover-checklist.md) | Quality gate TED sebelum serah terima production. |
 | [`guides/ted-gap-analysis.md`](guides/ted-gap-analysis.md) | Review & prioritas perbaikan template TED. |
+| [`tools/ted-docx/`](tools/ted-docx/) | Generator `Template-TED.docx` (regenerate kalau template berubah). |
 
 ## 🔄 Alur Penggunaan
 
