@@ -31,8 +31,20 @@ Pendukung TED:
 
 | File | Kegunaan |
 |------|----------|
+| [`guides/panduan-pengisian-ted.md`](guides/panduan-pengisian-ted.md) | **Cara mengisi TED** — RACI, timeline, konvensi ID, contoh benar vs salah, kata terlarang, 10 kesalahan umum. **Wajib dibaca developer sebelum mengisi.** |
 | [`guides/ted-handover-checklist.md`](guides/ted-handover-checklist.md) | **Quality gate 7 tahap** sebelum naik production. Satu item wajib gagal → project ditunda. |
 | [`guides/ted-gap-analysis.md`](guides/ted-gap-analysis.md) | Hasil review template TED lama + prioritas perbaikan (impact/urgency/effort). |
+
+**Bagian C wajib memuat 4 pilar** — sepanjang hal itu ada pada pengembangan:
+
+| Pilar | Kapan wajib diisi |
+|-------|-------------------|
+| 🔄 **C.1 Flow Process** | ada alur/langkah proses bisnis yang berubah |
+| 🖥️ **C.2 UI / Screen** | ada layar yang dilihat user |
+| 🔌 **C.3 API Contract** | ada endpoint / service online |
+| 📄 **C.4 File / Batch** | ada file yang dikirim, diterima, atau di-upload |
+
+Matriks `C.0` di awal bagian C dipakai untuk menyatakan tiap pilar `Ada` / `Tidak ada` beserta alasannya. Kosong tanpa keterangan → dokumen dikembalikan.
 
 ### 🔗 Cara memilih template
 
@@ -55,6 +67,7 @@ Contoh: fitur **"Export Transaksi"** = Flow (proses export) + Screen (tombol & m
 | [`guides/definition-of-ready.md`](guides/definition-of-ready.md) | Checklist "Definition of Ready" — kapan requirement siap dikerjakan. |
 | [`examples/`](examples/) | Contoh keempat template yang sudah diisi (fitur "Export Transaksi"). |
 | [`requirements/`](requirements/) | Tempat menyimpan requirement aktif yang sudah diisi. |
+| [`guides/panduan-pengisian-ted.md`](guides/panduan-pengisian-ted.md) | Panduan mengisi TED untuk tim developer. |
 | [`guides/ted-handover-checklist.md`](guides/ted-handover-checklist.md) | Quality gate TED sebelum serah terima production. |
 | [`guides/ted-gap-analysis.md`](guides/ted-gap-analysis.md) | Review & prioritas perbaikan template TED. |
 

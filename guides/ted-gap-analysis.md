@@ -15,11 +15,11 @@ Dengan kriteria itu, template saat ini **belum lulus**.
 | Bagian | Status | Catatan |
 |--------|--------|---------|
 | A. Executive Summary | 🟡 Cukup | Background & objective OK, tapi tidak ada solution summary & out-of-scope |
-| B. Technology Vision | 🔴 Kosong | 4 baris tanpa angka — tidak ada nilai |
+| B. Technology Vision | 🟡 Dipertahankan | Format tetap seperti semula (keputusan Dept. Head) |
 | B. Topology / HLA | 🟡 Cukup | Ada, tapi tanpa penjelasan komponen & alur data |
 | B. Tech Stack | 🟢 Baik | Format sudah rapi, EOS date bagus |
 | B. Infrastructure Design | 🔴 Salah fokus | Dump 28 server + IP production, tapi tidak menunjuk mana yang terdampak |
-| C. API Documentation | 🔴 Salah isi | Isinya layout file batch, bukan kontrak API |
+| C. API Documentation | 🔴 Salah isi | Isinya layout file batch, bukan kontrak API — direstrukturisasi jadi 4 pilar (Flow/UI/API/File) |
 | C. Database Schema | 🔴 Kosong | Hanya "lampiran diagram" — tabel baru tidak dispesifikasi |
 | C. Impact Analysis | 🟡 Cukup | Struktur ada, tapi test scenario menumpuk jadi 1 sel |
 | C. Reviewer Sign-off | 🟢 Baik | Impacted/Not Impacted per unit — ini kekuatan template |
@@ -60,13 +60,20 @@ Itu **spesifikasi layout file batch**, bukan kontrak API. Tidak ada tempat untuk
 
 Akibatnya di contoh dokumen, section ini **dikosongkan seluruhnya** — padahal pengembangan ini jelas punya API (inquiry MID, save whitelist, bulk upload, export).
 
-**Aksi:** Pecah menjadi dua sub-bagian terpisah:
-- **C.1 API Contract** — untuk service online (REST/SOAP/ISO 8583)
-- **C.2 File Interface / Batch Layout** — untuk file (pakai format lama, sudah benar untuk kasus file)
+**Aksi (diperluas sesuai keputusan Dept. Head):** Bagian C wajib memuat **4 pilar** sepanjang hal itu ada pada pengembangan:
+- **C.1 Flow Process** — alur proses, decision point, exception, transisi status
+- **C.2 UI / Screen** — field, validasi, aksi, state, hak akses per role
+- **C.3 API Contract** — service online (REST/SOAP/ISO 8583)
+- **C.4 File Interface / Batch Layout** — interface berbasis file (format lama dipertahankan, sudah benar untuk kasus file)
+
+Ditambah **matriks kelengkapan C.0**: setiap pilar wajib dinyatakan `Ada` atau `Tidak ada` beserta alasannya. Kosong tanpa keterangan = dokumen dikembalikan.
 
 ---
 
-### 3. ⛔ Tidak ada Non-Functional Requirement dengan angka
+### 3. ⚠️ Tidak ada Non-Functional Requirement dengan angka — **TIDAK DIADOPSI (keputusan Dept. Head)**
+
+> **Keputusan:** temuan ini **tidak dijadikan bagian template**. Technology Vision dipertahankan dalam bentuk semula. Catatan di bawah disimpan sebagai rekam jejak review saja.
+
 
 `Technology Vision` hanya tabel 4 baris: Stability / Scalability / Security / Good User Experience — **semuanya kosong di contoh**.
 
@@ -80,7 +87,7 @@ Untuk payment processor, dokumen tanpa angka NFR tidak bisa dipakai untuk capaci
 - Target availability & RTO/RPO
 - Retention & archiving data
 
-**Aksi:** Ganti tabel "Technology Vision" menjadi **tabel NFR terukur** — kolom `Aspek | Target | Cara Ukur | Kondisi Saat Ini`.
+**Aksi:** — *tidak diadopsi.* Technology Vision tetap dipakai apa adanya.
 
 ---
 
@@ -196,10 +203,10 @@ Diurutkan berdasarkan **impact × urgency ÷ effort**:
 |---|------|--------|---------|--------|-----------|
 | 1 | Tambah **Bagian D — Operational Handover** (runbook, log, alert, troubleshooting, eskalasi) | 🔴 Tinggi | 🔴 Sekarang | Sedang | **P0** |
 | 2 | Tambah **Deployment & Rollback Plan + PIV** | 🔴 Tinggi | 🔴 Sekarang | Rendah | **P0** |
-| 3 | Perbaiki **C.1 API Contract** (pisahkan dari file layout) | 🔴 Tinggi | 🔴 Sekarang | Rendah | **P0** |
+| 3 | Restrukturisasi **Bagian C jadi 4 pilar**: Flow, UI, API, File | 🔴 Tinggi | 🔴 Sekarang | Sedang | **P0** |
 | 4 | Turunkan detail server produksi + naikkan klasifikasi dokumen | 🔴 Tinggi | 🔴 Sekarang | Rendah | **P0** |
 | 5 | Wajibkan **DDL + kamus kolom** di Database Schema | 🟠 Sedang | 🔴 Sekarang | Rendah | **P1** |
-| 6 | Ganti Technology Vision → **NFR terukur** | 🟠 Sedang | 🟠 Sprint ini | Rendah | **P1** |
+| 6 | ~~Ganti Technology Vision → NFR terukur~~ | — | — | — | **TIDAK DIADOPSI** |
 | 7 | Tambah **Security & Access Control matrix + audit trail spec** | 🔴 Tinggi | 🟠 Sprint ini | Sedang | **P1** |
 | 8 | Strukturkan **Test Scenario** ke tabel + link evidence SIT/UAT | 🟠 Sedang | 🟠 Sprint ini | Rendah | **P1** |
 | 9 | Terapkan **ID traceability** `TED-xxxxx-Rnn` konsisten | 🟠 Sedang | 🟡 Bulan ini | Rendah | **P2** |

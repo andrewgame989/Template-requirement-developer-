@@ -8,8 +8,11 @@
   - Bagian bertanda (WAJIB) tidak boleh kosong. Jika benar-benar tidak relevan,
     tulis "N/A" DISERTAI alasan singkat. "N/A" tanpa alasan = dokumen dikembalikan.
   - Gunakan ID requirement TED-<no>-Rnn secara konsisten di SELURUH bagian
-    (Scope -> API -> DB -> Test -> Code Dependency -> Runbook).
+    (Scope -> Flow/UI/API/File -> DB -> Test -> Code Dependency -> Runbook).
+  - Bagian C WAJIB memuat 4 pilar sepanjang hal itu ada pada pengembangan:
+    Flow Process (C.1), UI/Screen (C.2), API (C.3), File/Batch (C.4).
   - Bagian D (Operational Handover) adalah syarat mutlak serah terima ke App Support.
+  - Cara mengisi: baca guides/panduan-pengisian-ted.md
 -->
 
 # 📘 Technical Engineering Document (TED)
@@ -106,22 +109,14 @@
 
 # B. Technical Solution
 
-## B.1 Non-Functional Requirement (WAJIB — MENGGANTIKAN "Technology Vision")
+## B.1 Technology Vision (WAJIB)
 
-> Tabel ini **wajib berisi angka**. Tanpa angka, tidak ada dasar capacity planning dan App Support tidak bisa membedakan bug vs kapasitas habis.
-
-| Aspek | Target | Cara Ukur / Sumber | Kondisi Saat Ini |
-|-------|--------|--------------------|------------------|
-| Volume harian | `<n transaksi/record per hari>` | | |
-| TPS peak & jam peak | `<n TPS, jam HH:MM–HH:MM>` | | |
-| Response time (p95) | `< n ms` | APM | |
-| Response time (p99) | `< n ms` | APM | |
-| Concurrent user | `<n user>` | | |
-| Availability target | `<99.x%>` | | |
-| RTO / RPO | `<n menit / n menit>` | | |
-| Proyeksi pertumbuhan data 12 bln | `<n row, n GB>` | | |
-| Retention & archiving | `<n bulan aktif, lalu archive/purge>` | | |
-| Batas maksimum (bulk upload / export) | `<n baris per file, n MB>` | | |
+| Aspect | Description |
+|--------|-------------|
+| Stability | `<bagaimana solusi ini menjaga kestabilan layanan>` |
+| Scalability | `<bagaimana solusi ini menangani pertumbuhan volume>` |
+| Security | `<kontrol keamanan utama yang diterapkan>` |
+| Good User Experience | `<bagaimana solusi ini mempermudah pengguna>` |
 
 ## B.2 Topology / High Level Architecture (WAJIB)
 
@@ -169,9 +164,121 @@
 
 # C. Detail Design
 
-## C.1 API Contract (WAJIB — jika ada service online)
+> **Aturan:** dokumen ini **wajib memuat keempat pilar di bawah — sepanjang hal itu ada** pada pengembangan. Jika salah satu tidak ada, tulis **"Tidak ada"** beserta alasannya di matriks. Kosong tanpa keterangan = dokumen dikembalikan.
 
-> Isi bagian ini untuk **setiap** endpoint/service. Untuk interface berbasis **file**, gunakan C.2.
+## C.0 Matriks Kelengkapan Detail Design (WAJIB)
+
+| Pilar | Ada? | Jumlah item | Bagian | Keterangan / alasan jika "Tidak ada" |
+|-------|------|-------------|--------|--------------------------------------|
+| 🔄 **Flow Process** | ☐ Ada ☐ Tidak ada | | C.1 | |
+| 🖥️ **UI / Screen** | ☐ Ada ☐ Tidak ada | | C.2 | |
+| 🔌 **API** | ☐ Ada ☐ Tidak ada | | C.3 | |
+| 📄 **File / Batch** | ☐ Ada ☐ Tidak ada | | C.4 | |
+
+---
+
+## C.1 Flow Process (WAJIB — jika ada perubahan alur proses)
+
+> Satu sub-bagian untuk **setiap** alur proses. Diagram wajib; diagram tanpa narasi tidak diterima, narasi tanpa diagram juga tidak.
+
+**Ref. Requirement:** `TED-XXXXX-Rnn` &nbsp;&nbsp; **Nama Flow:** `<nama proses>`
+
+**Diagram alur (WAJIB):** `<flowchart / BPMN / swimlane / sequence diagram — lampirkan atau embed>`
+
+| Field | Isi |
+|-------|-----|
+| Aktor / sistem yang terlibat | |
+| Trigger (pemicu) | `<user klik, jadwal batch, callback masuk, event>` |
+| Pre-condition | |
+| Post-condition (sukses) | |
+| Post-condition (gagal) | |
+| Sifat proses | Sinkron / Asinkron / Batch |
+
+**Langkah proses (WAJIB):**
+
+| Step | Aktor / Komponen | Aksi | Input | Output | Kondisi / Percabangan |
+|------|------------------|------|-------|--------|-----------------------|
+| 1 | | | | | |
+
+**Decision point / business rule (WAJIB):**
+
+| No | Kondisi | Jika Ya | Jika Tidak | Sumber Aturan |
+|----|---------|---------|------------|---------------|
+| 1 | | | | |
+
+**Exception & alur alternatif (WAJIB — bukan hanya happy path):**
+
+| No | Kondisi Gagal | Yang Terjadi di Sistem | Pesan ke User | Data ter-rollback? | Bisa diulang (retry)? |
+|----|---------------|------------------------|---------------|--------------------|-----------------------|
+| 1 | `<timeout ke service lain>` | | | Ya/Tidak | Ya/Tidak |
+| 2 | `<data tidak ditemukan>` | | | | |
+| 3 | `<validasi gagal>` | | | | |
+
+**Transisi status (jika ada status):**
+
+| Status Awal | Event / Aksi | Status Akhir | Siapa yang boleh | Reversible? |
+|-------------|--------------|--------------|------------------|-------------|
+| | | | | Ya/Tidak |
+
+---
+
+## C.2 UI / Screen (WAJIB — jika ada layar baru/berubah)
+
+> Satu sub-bagian untuk **setiap** screen. Wajib menyertakan link desain (Figma/mockup) **yang bisa diakses**.
+
+**Ref. Requirement:** `TED-XXXXX-Rnn` &nbsp;&nbsp; **Nama Screen:** `<nama>` &nbsp;&nbsp; **Link Desain:** `<link Figma>`
+
+| Field | Isi |
+|-------|-----|
+| Menu / path navigasi | `<mis. Merchant > Whitelist Routing>` |
+| Jenis | Screen baru / Perubahan screen existing |
+| Platform | Web / Mobile / Both |
+| Screenshot / mockup | `<lampirkan gambar>` |
+
+**Daftar Field (WAJIB):**
+
+| No | Label Field | Tipe Komponen | Wajib? | Sumber Data | Validasi | Pesan Error | Default | Editable |
+|----|-------------|---------------|--------|-------------|----------|-------------|---------|----------|
+| 1 | | Text / Dropdown / Date / Checkbox / Upload | Y/N | `<API / common code / statis>` | | | | Ya/Tidak |
+
+**Daftar Aksi / Tombol (WAJIB):**
+
+| Tombol / Aksi | Fungsi | API yang dipanggil (ref. C.3) | Konfirmasi? | Hasil Sukses | Hasil Gagal | Role yang boleh |
+|---------------|--------|-------------------------------|-------------|--------------|-------------|-----------------|
+| | | | Ya/Tidak | | | |
+
+**State Layar (WAJIB — semua state harus dijelaskan):**
+
+| State | Tampilan / Perilaku |
+|-------|---------------------|
+| Normal (ada data) | |
+| Loading | |
+| Empty (data kosong) | |
+| Error (gagal ambil data) | |
+| Success (setelah aksi berhasil) | |
+| Read-only / tanpa hak akses | |
+
+**Hak Akses per Role di Screen ini (WAJIB):**
+
+| Role | Lihat Menu | Lihat Data | Tambah | Ubah | Hapus | Upload | Export |
+|------|-----------|------------|--------|------|-------|--------|--------|
+| | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ | ☐ |
+
+**Aturan tampilan data:**
+
+| Aspek | Isi |
+|-------|-----|
+| Paginasi / jumlah baris per halaman | |
+| Pengurutan default | |
+| Filter & pencarian yang tersedia | |
+| Format tampilan (tanggal, angka, mata uang) | |
+| Data yang di-masking di layar | |
+
+---
+
+## C.3 API Contract (WAJIB — jika ada service online)
+
+> Isi bagian ini untuk **setiap** endpoint/service. Untuk interface berbasis **file**, gunakan C.4.
 > Lampirkan **OpenAPI/Swagger atau Postman collection** — link wajib.
 
 **Ref. Requirement:** `TED-XXXXX-Rnn` &nbsp;&nbsp; **Spesifikasi:** `<link Swagger/Postman>`
@@ -221,20 +328,29 @@
 // Response Error
 ```
 
-## C.2 File Interface / Batch Layout (WAJIB — jika ada interface file)
+---
+
+## C.4 File Interface / Batch Layout (WAJIB — jika ada interface file)
+
+**Ref. Requirement:** `TED-XXXXX-Rnn`
 
 ### `<File Name>`
 
 | Properti | Isi |
 |----------|-----|
+| Arah | Inbound (diterima) / Outbound (dikirim) |
+| Lawan transaksi | `<sistem/pihak pengirim atau penerima>` |
 | Path | |
 | File name pattern | `<mis. WHITELIST_YYYYMMDD.csv>` |
 | File type | |
 | Delimiter char | |
 | Encoding | |
 | Frekuensi / Jadwal | |
+| Cara transfer | `<SFTP / share folder / upload manual dari UI>` |
 | Encryption / PGP | Ya/Tidak |
+| Ukuran & jumlah baris maksimum | |
 | Retention file | |
+| Penanganan file gagal / reject | `<dipindah ke folder mana, notifikasi ke siapa>` |
 
 **Header Field / Body Field / Trailer Field:**
 
@@ -244,7 +360,12 @@
 | Body | | | | | |
 | Trailer | | | | | |
 
-## C.3 Database Design (WAJIB — jika ada perubahan skema)
+**Contoh isi file:**
+```
+<contoh 3 baris: header, body, trailer>
+```
+
+## C.5 Database Design (WAJIB — jika ada perubahan skema)
 
 > ⚠️ **DDL dan kamus kolom WAJIB ada di dalam dokumen ini**, bukan hanya "lampiran diagram". App Support perlu ini untuk query manual saat insiden.
 
@@ -288,7 +409,7 @@
 |--------|--------|---------------|------|------------|----------|
 | | | | | | |
 
-## C.4 Security & Access Control (WAJIB — BARU, diisi Developer di awal)
+## C.6 Security & Access Control (WAJIB — BARU, diisi Developer di awal)
 
 > Bagian ini **diisi developer saat desain**, bukan diisi IT Security di akhir. IT Security me-*review*, bukan mengarang.
 
@@ -333,7 +454,7 @@
 | Proteksi SQL injection / XSS | Ya/Tidak | |
 | Sanitasi output export (CSV injection) | Ya/Tidak | |
 
-## C.5 Impact Analysis (WAJIB)
+## C.7 Impact Analysis (WAJIB)
 
 | Ref. Requirement | Aspek | Existing Flow | Changes / To Be Flow | Risiko | Mitigasi |
 |------------------|-------|---------------|----------------------|--------|----------|
@@ -364,7 +485,7 @@
 | **Compliance Review** | | | | | |
 | IT Governance, Risk & Compliance | ☐ Impacted ☐ Not Impacted | | | | |
 
-## C.6 Code Dependency (WAJIB)
+## C.8 Code Dependency (WAJIB)
 
 | Program / Module | Jenis Program | Changes Type | Ref. Requirement | Related Project | Interface/API | Repository & Branch/Tag | Rollback Impact | Version Prod | Version Test | Version Dev |
 |------------------|---------------|--------------|------------------|-----------------|---------------|-------------------------|-----------------|--------------|--------------|-------------|
@@ -372,7 +493,7 @@
 
 > Kolom `Rollback Impact` **tidak boleh diisi `N/A` tanpa alasan**. Jelaskan apa yang terjadi jika program ini di-rollback sendirian (mis. "harus rollback bersama SMC03F300R karena kontrak berubah").
 
-## C.7 Security Code Review (Diisi & diverifikasi IT Security)
+## C.9 Security Code Review (Diisi & diverifikasi IT Security)
 
 > `Checking Item` sudah baku di bawah — developer wajib memastikan terpenuhi **sebelum** submit ke IT Security.
 

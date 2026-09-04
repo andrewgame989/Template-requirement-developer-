@@ -29,13 +29,16 @@ Jika jawabannya "tidak", berhenti di sini. Perbaiki Bagian D dulu.
 
 ## ⛔ Gate 2 — Desain Teknis
 
-- [ ] **NFR berisi angka** (TPS, response time, volume, growth) — bukan tabel kosong
+- [ ] Technology Vision terisi (Stability / Scalability / Security / UX) — bukan tabel kosong
 - [ ] Diagram arsitektur ada **beserta penjelasan komponen**, bukan gambar tanpa narasi
 - [ ] Hanya komponen/server **yang terdampak** yang dicantumkan (bukan dump seluruh server)
 - [ ] Kebutuhan resource baru & firewall request tercatat beserta status pengadaannya
+- [ ] **Matriks kelengkapan C.0 terisi** — keempat pilar (Flow / UI / API / File) dinyatakan `Ada` atau `Tidak ada` beserta alasannya
+- [ ] **Flow Process**: diagram + langkah + decision point + **exception & alur alternatif** (bukan hanya happy path) + transisi status
+- [ ] **UI / Screen**: link desain aktif, daftar field + validasi + pesan error, mapping tombol → API, **semua state** (normal/loading/empty/error/success/no-access), hak akses per role
 - [ ] **API Contract** lengkap: endpoint, auth, request/response, **seluruh error code**, timeout, retry
 - [ ] Link Swagger/Postman aktif dan bisa diakses
-- [ ] File/batch layout lengkap (jika ada interface file)
+- [ ] **File/Batch layout** lengkap: arah, pattern nama file, layout header/body/trailer, penanganan file reject, contoh isi file
 - [ ] **DDL ada di dalam dokumen**, bukan hanya "lampiran diagram"
 - [ ] Kamus kolom, index, dan justifikasi index terisi
 - [ ] **Estimasi growth + retention + purging policy** terisi
