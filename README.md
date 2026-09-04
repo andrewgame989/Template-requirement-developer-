@@ -17,6 +17,23 @@ Requirement dipecah menjadi **4 template** sesuai jenis kebutuhan. Satu fitur bi
 | 3 | 📊 **Report** | Menjelaskan **laporan/export/dashboard**: parameter, kolom, rumus, agregasi, sumber data. | [`templates/3-report-template.md`](templates/3-report-template.md) |
 | 4 | 🔌 **API** | Menjelaskan **kontrak API/integrasi**: method, request, response, error, business rule. | [`templates/4-api-template.md`](templates/4-api-template.md) |
 
+### 📘 Template 5 — TED (sisi Developer)
+
+Template 1–4 diisi **Product/BA** sebelum development. Setelah development selesai, tim **Developer** mengisi **TED (Technical Engineering Document)** — pengganti TSD — sebagai **dokumen serah terima ke Internal Developer & Application Support saat naik production**.
+
+| # | Template | Diisi oleh | File |
+|---|----------|-----------|------|
+| 5 | 📘 **TED** | Developer / Tech Lead | [`templates/5-ted-template.md`](templates/5-ted-template.md) |
+
+> **Uji kelayakan TED:** bisakah App Support menangani insiden **jam 2 pagi** hanya dengan dokumen ini, tanpa menelepon developer? Kalau belum bisa, TED belum layak diserahterimakan.
+
+Pendukung TED:
+
+| File | Kegunaan |
+|------|----------|
+| [`guides/ted-handover-checklist.md`](guides/ted-handover-checklist.md) | **Quality gate 7 tahap** sebelum naik production. Satu item wajib gagal → project ditunda. |
+| [`guides/ted-gap-analysis.md`](guides/ted-gap-analysis.md) | Hasil review template TED lama + prioritas perbaikan (impact/urgency/effort). |
+
 ### 🔗 Cara memilih template
 
 ```
@@ -38,6 +55,8 @@ Contoh: fitur **"Export Transaksi"** = Flow (proses export) + Screen (tombol & m
 | [`guides/definition-of-ready.md`](guides/definition-of-ready.md) | Checklist "Definition of Ready" — kapan requirement siap dikerjakan. |
 | [`examples/`](examples/) | Contoh keempat template yang sudah diisi (fitur "Export Transaksi"). |
 | [`requirements/`](requirements/) | Tempat menyimpan requirement aktif yang sudah diisi. |
+| [`guides/ted-handover-checklist.md`](guides/ted-handover-checklist.md) | Quality gate TED sebelum serah terima production. |
+| [`guides/ted-gap-analysis.md`](guides/ted-gap-analysis.md) | Review & prioritas perbaikan template TED. |
 
 ## 🔄 Alur Penggunaan
 
